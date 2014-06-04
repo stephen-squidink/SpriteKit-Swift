@@ -13,35 +13,26 @@ class GameScene: SKScene {
     
     var isJump : Bool = false;
     
-    var layer1 : ParallaxSprite!
-    var layer2 : ParallaxSprite!
-    var layer3 : ParallaxSprite!
-    var layer4 : ParallaxSprite!
-    
     var background : SKSpriteNode!
+    var parallax : ParallaxSprite[]!
     var player : SKSpriteNode!
     var stars : SKSpriteNode[] = [];
     
     var starCounter : Int = 0;
     
     override func didMoveToView(view: SKView) {
-        let ref : SKSpriteNode[] = CreateManager.createBackground(self);
+        let ref = CreateManager.createBackground(self);
         
-        background = ref[0];
-        
-        layer1 = ref[1] as ParallaxSprite;
-        layer2 = ref[2] as ParallaxSprite;
-        layer3 = ref[3] as ParallaxSprite;
-        layer4 = ref[4] as ParallaxSprite;
-        
+        background = ref.background;
+        parallax = ref.parallax;
+    
         player = CreateManager.createCharacter(self);
     }
    
     override func update(currentTime: CFTimeInterval) {
-        layer1.update();
-        layer2.update();
-        layer3.update();
-        layer4.update();
+        for p : ParallaxSprite in parallax {
+            p.update();
+        }
         
         self.updateStars();
     }

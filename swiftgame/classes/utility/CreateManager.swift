@@ -10,23 +10,23 @@ import SpriteKit
 
 struct CreateManager {
    
-    static func createBackground(parent : SKScene)->SKSpriteNode[]{
-        let background : SKSpriteNode = SKSpriteNode(imageNamed: "BGSky.jpg");
+    static func createBackground(parent : SKScene)->(background : SKSpriteNode, parallax : ParallaxSprite[]){
+        let background = SKSpriteNode(imageNamed: "BGSky.jpg");
         background.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame));
         
         parent.addChild(background);
-        
-        let layer1 : ParallaxSprite = ParallaxSprite(name: "BGCloud", speed: 2, frame: parent.frame);
-        let layer2 : ParallaxSprite  = ParallaxSprite(name: "BGMountains", speed: 3, frame: parent.frame);
-        let layer3 : ParallaxSprite  = ParallaxSprite(name: "BGCloud2", speed: 4, frame: parent.frame);
-        let layer4 : ParallaxSprite  = ParallaxSprite(name: "BGGrass", speed: 5, frame: parent.frame);
+
+        let layer1 = ParallaxSprite(name: "BGCloud", speed: 2, frame: parent.frame);
+        let layer2 = ParallaxSprite(name: "BGMountains", speed: 3, frame: parent.frame);
+        let layer3 = ParallaxSprite(name: "BGCloud2", speed: 4, frame: parent.frame);
+        let layer4 = ParallaxSprite(name: "BGGrass", speed: 5, frame: parent.frame);
         
         parent.addChild(layer1);
         parent.addChild(layer2);
         parent.addChild(layer3);
         parent.addChild(layer4);
         
-        return [background, layer1, layer2, layer3, layer4];
+        return (background, [layer1, layer2, layer3, layer4]);
     }
     
     static func createCharacter(parent : SKScene)->SKSpriteNode{
