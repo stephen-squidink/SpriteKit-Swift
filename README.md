@@ -32,14 +32,11 @@ Features that will be coming soon:
 Swift
 ---
 
-Please download the following frameworks & libraries for this game to compile: -
+This project will highlight a few of the core language features about Swift, but I would personally read through these documents, I personally found them useful to learn more about Swift and understanding teh structure and syntax of the language:
 
 * [__Apple Documentation__](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
-
 * [__Download the iBook__](https://itunes.apple.com/us/book/the-swift-programming-language/id881256329?mt=11)
-
 * [__Swift Cheat Sheet__](https://github.com/grant/swift-cheat-sheet)
-
 * [__Swift Language Highlights by Matt Galloway__](http://www.raywenderlich.com/73997/swift-language-highlights)
 
 Concept, Design & Development
