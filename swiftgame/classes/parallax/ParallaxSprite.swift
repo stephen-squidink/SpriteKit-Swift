@@ -15,13 +15,11 @@ class ParallaxSprite: SKSpriteNode {
     var image1 : SKSpriteNode!
     var image2 : SKSpriteNode!
     
-    init(texture: SKTexture!)
-    {
+    init(texture: SKTexture!) {
         super.init(texture: texture);
     }
     
-    init(texture: SKTexture!, color: UIColor!, size: CGSize)
-    {
+    init(texture: SKTexture!, color: UIColor!, size: CGSize) {
         super.init(texture: texture, color: color, size:size)
     }
     

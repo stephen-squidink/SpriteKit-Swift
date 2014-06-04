@@ -56,14 +56,22 @@ struct CreateManager {
         let action : SKAction = SKAction.repeatActionForever(SKAction.animateWithTextures(characterFrames, timePerFrame: 0.1));
         player.runAction(action);
         
+        player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size);
+        
         return player;
     }
     
     static func createStar(parent : SKScene)->SKSpriteNode{
         let star : SKSpriteNode = SKSpriteNode(imageNamed: "Star");
-        star.position.x = parent.frame.width + star.size.width;
         let rnd : CGFloat = CGFloat(arc4random() % 100);
-        star.position.y = CGFloat(CGRectGetMidY(parent.frame) - 20 + rnd);
+        star.position.x = parent.frame.width + star.size.width;
+        star.position.y = CGFloat(CGRectGetMidY(parent.frame) - 10 + rnd);
+        
+        
+        star.physicsBody = SKPhysicsBody(rectangleOfSize: star.size);
+        star.physicsBody.categoryBitMask = ContactCategory.star;
+        star.physicsBody.collisionBitMask = ContactCategory.star | ContactCategory.charactor;
+        star.physicsBody.contactTestBitMask = ContactCategory.star | ContactCategory.charactor;
         
         parent.addChild(star);
         

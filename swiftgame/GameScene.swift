@@ -9,7 +9,12 @@
 import Foundation
 import SpriteKit
 
-class GameScene: SKScene {
+struct ContactCategory {
+    static let charactor : UInt32 = 0x1 << 0;
+    static let star      : UInt32 = 0x1 << 1;
+}
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isJump : Bool = false;
     
@@ -27,6 +32,9 @@ class GameScene: SKScene {
         parallax = ref.parallax;
     
         player = CreateManager.createCharacter(self);
+        
+        self.physicsWorld.contactDelegate = self;
+        self.physicsWorld.gravity = CGVectorMake(0, 0);
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -68,6 +76,36 @@ class GameScene: SKScene {
                 player.runAction(SKAction.sequence([jumpAction, fallAction, completeAction]));
                 
                 isJump = true;
+            }
+        }
+    }
+    
+    func didBeginContact(contact : SKPhysicsContact){
+        var firstBody : SKPhysicsBody;
+        var secondBody : SKPhysicsBody;
+        
+        if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+            firstBody = contact.bodyA;
+            secondBody = contact.bodyB;
+        } else {
+            firstBody = contact.bodyB;
+            secondBody = contact.bodyA;
+        }
+    
+        if ((firstBody.categoryBitMask & ContactCategory.star) != 0) {
+            self.destroyStar(firstBody.node);
+        }
+    }
+    
+    func destroyStar(star : SKNode) {
+        for var index = stars.count - 1; index >= 0; --index {
+            let s : SKSpriteNode = stars[index];
+    
+            if(s == star){
+                stars.removeAtIndex(index)
+                star.removeFromParent();
+                
+                return;
             }
         }
     }
