@@ -16,6 +16,8 @@ struct ContactCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    let sound : SKAction = SKAction.playSoundFileNamed("star.caf", waitForCompletion: false);
+    
     var isJump : Bool = false;
     
     var background : SKSpriteNode!
@@ -53,11 +55,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         for var index = stars.count - 1; index >= 0; --index {
-            let s : SKSpriteNode = stars[index];
-            s.position.x -= 10;
+            let star : SKSpriteNode = stars[index];
+            star.position.x -= 10;
             
-            if(s.position.x < 0 - s.size.width){
+            if(star.position.x < 0 - star.size.width){
                 stars.removeAtIndex(index);
+                star.removeFromParent();
             }
         }
     }
@@ -91,9 +94,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             firstBody = contact.bodyB;
             secondBody = contact.bodyA;
         }
-    
+        
         if ((firstBody.categoryBitMask & ContactCategory.star) != 0) {
             self.destroyStar(firstBody.node);
+            self.runAction(sound);
         }
     }
     
