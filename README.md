@@ -21,10 +21,10 @@ Some of the features & highlights this game showcases:
 * Character Animations
 * Touch Tap Interaction
 * Tween Animations
+* Collision Detection
 
 Features that will be coming soon:
 
-* Collision Detection
 * Displaying score
 * Playing sounds
 * Particle Effects
