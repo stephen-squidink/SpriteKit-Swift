@@ -22,11 +22,11 @@ Some of the features & highlights this game showcases:
 * Touch Tap Interaction
 * Tween Animations
 * Collision Detection
+* Playing sounds
 
 Features that will be coming soon:
 
 * Displaying score
-* Playing sounds
 * Particle Effects
 
 Swift
