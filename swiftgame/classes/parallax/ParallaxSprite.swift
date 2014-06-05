@@ -48,7 +48,7 @@ class ParallaxSprite: SKSpriteNode {
     
     func update() {
         if(self.parallaxSpeed > 0){
-            self.position.x -= self.parallaxSpeed;
+            self.position.x -= Float(self.parallaxSpeed);
             
             if(self.position.x < -self.image1.size.width) {
                 self.position.x = 0;
