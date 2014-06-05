@@ -32,7 +32,7 @@ Features that will be coming soon:
 Swift
 ---
 
-This project will highlight a few of the core language features about Swift, but I would personally read through these documents, I personally found them useful to learn more about Swift and understanding teh structure and syntax of the language:
+This project will highlight a few of the core language features about Swift, but I would read through these documents, I found them useful to learn more about Swift and understanding teh structure and syntax of the language:
 
 * [__Apple Documentation__](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html)
 * [__Download the iBook__](https://itunes.apple.com/us/book/the-swift-programming-language/id881256329?mt=11)
