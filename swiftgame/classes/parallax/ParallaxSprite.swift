@@ -32,18 +32,15 @@ class ParallaxSprite: SKSpriteNode {
         let texture : SKTexture = SKTexture(imageNamed: parallaxName);
 
         self.image1 = SKSpriteNode(texture: texture, size: texture.size());
-        self.image2 = SKSpriteNode(texture: texture);
-        
+        self.image1.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
         self.addChild(image1);
         
-        if(speed > 0)
-        {
+        if(speed > 0) {
+            self.image2 = SKSpriteNode(texture: texture);
+            self.image2.position.x = self.image1.position.x + self.image1.size.width;
+            self.image2.position.y = self.image1.position.y;
             self.addChild(self.image2);
         }
-        
-        self.image1.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
-        self.image2.position.x = self.image1.position.x + self.image1.size.width;
-        self.image2.position.y = self.image1.position.y;
     }
     
     func update() {
