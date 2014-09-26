@@ -10,7 +10,7 @@ import SpriteKit
 
 struct CreateManager {
    
-    static func createBackground(parent : SKScene)->(background : SKSpriteNode, parallax : ParallaxSprite[]){
+    static func createBackground(parent : SKScene)->(background : SKSpriteNode, parallax : [ParallaxSprite]){
         let background = SKSpriteNode(imageNamed: "BGSky.jpg");
         background.position = CGPointMake(CGRectGetMidX(parent.frame), CGRectGetMidY(parent.frame));
         
@@ -69,9 +69,9 @@ struct CreateManager {
         
         
         star.physicsBody = SKPhysicsBody(rectangleOfSize: star.size);
-        star.physicsBody.categoryBitMask = ContactCategory.star;
-        star.physicsBody.collisionBitMask = ContactCategory.star | ContactCategory.charactor;
-        star.physicsBody.contactTestBitMask = ContactCategory.star | ContactCategory.charactor;
+        star.physicsBody?.categoryBitMask = ContactCategory.star;
+        star.physicsBody?.collisionBitMask = ContactCategory.star | ContactCategory.charactor;
+        star.physicsBody?.contactTestBitMask = ContactCategory.star | ContactCategory.charactor;
         
         parent.addChild(star);
         
