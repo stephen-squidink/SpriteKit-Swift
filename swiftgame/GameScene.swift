@@ -21,9 +21,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isJump : Bool = false;
     
     var background : SKSpriteNode!
-    var parallax : ParallaxSprite[]!
+    var parallax : [ParallaxSprite]!
     var player : SKSpriteNode!
-    var stars : SKSpriteNode[] = [];
+    var stars : [SKSpriteNode] = [];
     
     var starCounter : Int = 0;
     
@@ -67,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if(!isJump){
-            let touch : AnyObject = touches.anyObject();
+            let touch : AnyObject? = touches.anyObject();
             if (touch != nil) {
                 
                 let jumpAction : SKAction = SKAction.moveTo(CGPointMake(player.position.x, player.position.y + 200), duration: 0.3);
@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if ((firstBody.categoryBitMask & ContactCategory.star) != 0) {
-            self.destroyStar(firstBody.node);
+            self.destroyStar(firstBody.node!);
             self.runAction(sound);
         }
     }
